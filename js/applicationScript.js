@@ -44,15 +44,19 @@ var init = function() {
   
   client = new Las2peerWidgetLibrary("http://localhost:8080/ToDoList", iwcCallback);
   
-
-  $('#DisplayButton').on('click', function() {
-    ShowData();
-  })
-  $('#SendButton').on('click', function() {
+$('#SendButton').on('click', function() {
     SentMessage();
   })
+ 
   $('#DeleteButton').on('click', function() {
-    DeleteMessage();
+    DeleteID();
+  })
+  $('#DisplayButton').on('click', function() {
+ 	    ShowData();
+     
+  })
+  $('#UpdateButton').on('click', function() {
+    UpdateMessage();
   })
 }
 
@@ -64,44 +68,53 @@ var callTable = function(){
 }
 
 
-// DeleteMessage
-var DeleteMessage = function(){
-  var DeleteContent = null;
-  client.sendRequest("DELETE", "", DeleteContent, "text/plain", {}, false,
+// DeleteID
+var DeleteID = function(){
+  var DeleteID = $('#DeleteID').val();
+  client.sendRequest("DELETE", "", DeleteID, "text/plain", {}, false,
   function(data, type) {
+    $("#messageStatus").val( data);
+   
     console.log(data);
   },
   function(error) {
-    console.log(error);
+       console.log(error);
   });
-  $( ".container" ).append("<input id='messageStatus'></input>");
-}
-
-
-// ShowData
-var ShowData = function(){
-  var DataContent = null;
-  client.sendRequest("GET", "", DataContent, "text/plain", {}, false,
-  function(data, type) {
-    console.log(data);
-  },
-  function(error) {
-    console.log(error);
-  });
+ 
 }
 
 
 // SentMessage
 var SentMessage = function(){
-  var listContent = null;
+  var listContent = $('#ToDoList').val();
   client.sendRequest("POST", "", listContent, "text/plain", {}, false,
   function(data, type) {
+    $("#messageStatus").val( data);
     console.log(data);
   },
   function(error) {
+    
     console.log(error);
   });
-  $("#messageStatus").html("Upated Element");
+ // $("#messageStatus").html("Upated Element");
+}
+
+// SentMessage
+var UpdateMessage = function()
+{
+     var UpdateContent = $('#ToDoList').val();
+  UpdateContent +=  ';' + $('#DeleteID').val();
+  client.sendRequest("PUT", "{id}", UpdateContent, "text/plain", {}, false,
+  function(data, type) {
+ //id=  $('#DeleteID').val();
+    $("#messageStatus").val( data);
+    console.log(data);
+  },
+  function(error) {
+    
+    console.log(error);
+  });
+ // $("#messageStatus").html("Upated Element");
 }
 
 
