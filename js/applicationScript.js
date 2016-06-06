@@ -52,7 +52,7 @@ $('#SendButton').on('click', function() {
     DeleteID();
   })
   $('#DisplayButton').on('click', function() {
- 	    ShowData();
+ 	    callTable();
      
   })
   $('#UpdateButton').on('click', function() {
