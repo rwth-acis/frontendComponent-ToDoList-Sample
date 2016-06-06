@@ -63,8 +63,11 @@ $('#SendButton').on('click', function() {
 
 // callTable
 var callTable = function(){
-  var  = "initialized";
-  client.sendIntent("showTable", );
+//  var  = "initialized";
+//  client.sendIntent("showTable", );
+  
+  init();
+  client.sendIntent("showTable", responseTable );
 }
 
 
