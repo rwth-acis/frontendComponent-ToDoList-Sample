@@ -2,7 +2,7 @@
 <Module>
   <ModulePrefs title="ToDoList" description="This is a simple toDoList"
     author="desared" author_email="me@gmail.com"
-    width="300" height="300">
+    width="400" height="300" >
 
     <Require feature="opensocial-0.8"></Require>
     <Require feature="openapp"></Require>
@@ -81,25 +81,44 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- inter widget communication library import -->
   <script type="text/javascript" src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/lib/iwc.js"></script>
   <!-- additional widget specific imports (put your own imports here as well) -->
+  <script src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/lib/y.js"></script>
+  <script src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/lib/y-array.js"></script>
+  <script src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/lib/y-text.js"></script>
+  <script src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/lib/y-websockets-client.js"></script>  
+  <script src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/lib/y-memory.js"></script>
 
-  <!-- import the client library -->
+ <!-- import the client library -->
   <script type="text/javascript" src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/lib/las2peerWidgetLibrary.js"></script>
   <!-- import application script -->
   <script type="text/javascript" src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/applicationScript.js"></script>
+  
+<style>
+table,th,tr,td{
+border: 2px solid black; 
 
+}
+</style>
 </head>
-<body>
+<body bgcolor="#E6E6FA">
 
+  
   <!-- container for actual page content -->
-  <div class="container" id="main-content">
+  <div class="container" id="main-content" >
 
-    <button id='DisplayButton' class="btn btn-default">DisplayButton</button>
-    <button id='DeleteButton' class="btn btn-default">DeleteButton</button>
-    <button id='SendButton' class="btn btn-default">SendButton</button>
-
-  </div>
-
+   <textarea id='ToDoList' placeholder="Send or Update Message here!" class="form-control" rows="4"></textarea>
+    <button id='SendButton' class="btn btn-default">Send Message!</button>
+    <button id='DeleteButton' class="btn btn-default">Delete by ID!</button>
+    <button id='DisplayButton' class="btn btn-default">Show Data!</button>
+    <button id='UpdateButton' class="btn btn-default">Update Data!</button>
+    <textarea id='DeleteID' placeholder="Delete or Update message of ID:" class="form-control" rows="1"></textarea>
+    <p><br />Status of latest action: </p>
+    <input id='messageStatus'></input>
+    
+   
+ </div>
+ 
 </body>
+
 </html>
 
   ]]>
