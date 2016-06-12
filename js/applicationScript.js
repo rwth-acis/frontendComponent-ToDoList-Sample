@@ -66,7 +66,7 @@ var callTable = function(){
 //  var  = "initialized";
 //  client.sendIntent("showTable", );
   
-  init();
+ // init();
   client.sendIntent("showTable" );
 }
 
