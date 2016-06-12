@@ -65,9 +65,22 @@ $('#SendButton').on('click', function() {
 var callTable = function(){
 //  var  = "initialized";
 //  client.sendIntent("showTable", );
-  
+  client.sendRequest("GET", "", "", "text/plain", {}, true,
+  function(data, type) {
+    for (var i = 0; i < (data.split(",").length)/2; i++) {
+       var row = $("<tr />")
+       $("#AllData").append(row); 
+     row.append($("<td>" + data.split(",")[i] + "</td>"));
+  row.append($("<td>" + data.split(",")[i+((data.split(",").length)/2)] + "</td>"));
+    }
+		     
+    console.log(data);
+  },
+  function(error) {
+    console.log(error);
+  });
  // init();
-  client.sendIntent("showTable");
+  client.sendIntent("showTable", data);
 }
 
 
