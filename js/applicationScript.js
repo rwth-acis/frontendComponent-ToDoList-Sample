@@ -75,12 +75,13 @@ var callTable = function(){
     }
 		     
     console.log(data);
+     client.sendIntent("showTable", data);
   },
   function(error) {
     console.log(error);
   });
  // init();
-  client.sendIntent("showTable", data);
+ 
 }
 
 
