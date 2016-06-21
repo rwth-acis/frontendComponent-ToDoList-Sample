@@ -38,7 +38,7 @@ var init = function() {
     // define your reactions on incoming iwc events here
     console.log(intent);
     if (intent.action == "test") {
-    //  responseAction(intent.data);
+      responseAction(intent.data);
     }
   };
   
@@ -129,7 +129,10 @@ var UpdateMessage = function()
 
 
 // responseAction
-var responseAction = function(){
+var responseAction = function(data , type){
+   $('#ToDoList').val() = data;
+  
+  
 }
 
 
