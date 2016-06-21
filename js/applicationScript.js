@@ -130,7 +130,7 @@ var UpdateMessage = function()
 
 // responseAction
 var responseAction = function(data , type){
-   $('#ToDoList').val() = data;
+   $('#ToDoList').val(data);
   
   
 }
