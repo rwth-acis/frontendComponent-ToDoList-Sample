@@ -130,9 +130,9 @@ var UpdateMessage = function()
 
 // responseAction
 var responseAction = function(data , type){
-  for (var i = 0; i < (data.split(",").length); i++) {
-    $('#DeleteID').val(data.split(",")[i]);
-  $('#ToDoList').val(data.split(",")[i+1]);}
+//  for (var i = 0; i < (data.split(",").length); i++) {
+    $('#DeleteID').val(data.split(",")[0]);
+  $('#ToDoList').val(data.split(",")[1]);
   // $('#ToDoList').val(data);
   
   
