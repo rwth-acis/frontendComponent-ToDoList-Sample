@@ -86,6 +86,7 @@ var DeleteID = function(){
     $("#messageStatus").val( data);
    
     console.log(data);
+    client.sendIntent("showTable", data);
   },
   function(error) {
        console.log(error);
@@ -101,6 +102,7 @@ var SentMessage = function(){
   function(data, type) {
     $("#messageStatus").val( data);
     console.log(data);
+    client.sendIntent("showTable", data);
   },
   function(error) {
     
@@ -119,6 +121,7 @@ var UpdateMessage = function()
  //id=  $('#DeleteID').val();
     $("#messageStatus").val( data);
     console.log(data);
+    client.sendIntent("showTable", data);
   },
   function(error) {
     
