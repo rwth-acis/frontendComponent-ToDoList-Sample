@@ -46,10 +46,12 @@ var init = function() {
   
 $('#SendButton').on('click', function() {
     SentMessage();
+     callTable();
   })
  
   $('#DeleteButton').on('click', function() {
     DeleteID();
+     callTable();
   })
   $('#DisplayButton').on('click', function() {
  	    callTable();
@@ -57,14 +59,14 @@ $('#SendButton').on('click', function() {
   })
   $('#UpdateButton').on('click', function() {
     UpdateMessage();
+     callTable();
   })
 }
 
 
 // callTable
 var callTable = function(){
-//  var  = "initialized";
-//  client.sendIntent("showTable", );
+
   client.sendRequest("GET", "", "", "text/plain", {}, true,
   function(data, type) {
         console.log(data);
@@ -86,7 +88,6 @@ var DeleteID = function(){
     $("#messageStatus").val( data);
    
     console.log(data);
-    client.sendIntent("showTable", data);
   },
   function(error) {
        console.log(error);
@@ -102,13 +103,11 @@ var SentMessage = function(){
   function(data, type) {
     $("#messageStatus").val( data);
     console.log(data);
-    client.sendIntent("showTable", data);
   },
   function(error) {
     
     console.log(error);
   });
- // $("#messageStatus").html("Upated Element");
 }
 
 // SentMessage
@@ -121,7 +120,6 @@ var UpdateMessage = function()
  //id=  $('#DeleteID').val();
     $("#messageStatus").val( data);
     console.log(data);
-    client.sendIntent("showTable", data);
   },
   function(error) {
     
