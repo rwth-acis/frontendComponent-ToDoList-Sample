@@ -65,17 +65,17 @@ $('#SendButton').on('click', function() {
 
 
 // callTable
-var callTable = function(data, type){
- client.sendIntent("showTable", data);
-/*  client.sendRequest("GET", "", "", "text/plain", {}, true,
+var callTable = function(){
+
+  client.sendRequest("GET", "", "", "text/plain", {}, true,
   function(data, type) {
         console.log(data);
      client.sendIntent("showTable", data);
   },
   function(error) {
     console.log(error);
-  });*/
- 
+  });
+ // init();
  
 }
 
