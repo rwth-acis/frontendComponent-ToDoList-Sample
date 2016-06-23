@@ -51,7 +51,7 @@ $('#SendButton').on('click', function() {
  
   $('#DeleteButton').on('click', function() {
    // DeleteID();
-     delete();
+     delete1();
   })
   $('#DisplayButton').on('click', function() {
  	    callTable();
@@ -128,7 +128,7 @@ var UpdateMessage = function()
  // $("#messageStatus").html("Upated Element");
 }
 
-function delete(){
+function delete1(){
  DeleteID();
      callTable();
 }
