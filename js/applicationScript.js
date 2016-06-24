@@ -44,6 +44,7 @@ var init = function() {
   
   client = new Las2peerWidgetLibrary("http://localhost:8080/ToDoList", iwcCallback);
   
+     callTable();
 $('#SendButton').on('click', function() {
     SentMessage();
     })
@@ -51,10 +52,10 @@ $('#SendButton').on('click', function() {
   $('#DeleteButton').on('click', function() {
     DeleteID();
      })
- $('#DisplayButton').on('click', function() {
- 	    callTable();
+// $('#DisplayButton').on('click', function() {})
+ 	 
      
-  })
+  
   $('#UpdateButton').on('click', function() {
     UpdateMessage();
     })
@@ -84,12 +85,11 @@ var DeleteID = function(){
   function(data, type) {
     $("#messageStatus").val( data);
    
- //   console.log(data);
   },
   function(error) {
        console.log(error);
   });
-  callTable();
+
   
 }
 
@@ -151,5 +151,5 @@ var responseAction = function(data , type){
 
 $(document).ready(function() {
   init();
-  callTable();
+//  callTable();
 });
