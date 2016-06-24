@@ -62,7 +62,7 @@ $('#SendButton').on('click', function() {
 
 
 // callTable
-/*var callTable = function(){
+var callTable = function(){
 
   client.sendRequest("GET", "", "", "text/plain", {}, true,
   function(data, type) {
@@ -74,7 +74,7 @@ $('#SendButton').on('click', function() {
   });
  // init();
  
-}*/
+}
 
 
 // DeleteID
