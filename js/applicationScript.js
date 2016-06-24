@@ -47,12 +47,12 @@ var init = function() {
      callTable();
 $('#SendButton').on('click', function() {
     SentMessage();
-     callTable();
+  //   callTable();
     })
  
   $('#DeleteButton').on('click', function() {
     DeleteID();
-     callTable();
+   //  callTable();
      })
 // $('#DisplayButton').on('click', function() {})
  	 
@@ -60,7 +60,7 @@ $('#SendButton').on('click', function() {
   
   $('#UpdateButton').on('click', function() {
     UpdateMessage();
-     callTable();
+ //    callTable();
     })
 }
 
@@ -92,6 +92,14 @@ var DeleteID = function(){
   function(error) {
        console.log(error);
   });
+   client.sendRequest("GET", "", "", "text/plain", {}, true,
+  function(data, type) {
+      //  console.log(data);
+     client.sendIntent("showTable", data);
+  },
+  function(error) {
+    console.log(error);
+  });
 
   
 }
@@ -107,6 +115,14 @@ var SentMessage = function(){
   },
   function(error) {
     
+    console.log(error);
+  });
+   client.sendRequest("GET", "", "", "text/plain", {}, true,
+  function(data, type) {
+      //  console.log(data);
+     client.sendIntent("showTable", data);
+  },
+  function(error) {
     console.log(error);
   });
 }
@@ -126,21 +142,17 @@ var UpdateMessage = function()
     
     console.log(error);
   });
+   client.sendRequest("GET", "", "", "text/plain", {}, true,
+  function(data, type) {
+      //  console.log(data);
+     client.sendIntent("showTable", data);
+  },
+  function(error) {
+    console.log(error);
+  });
 
 }
-/*
-function delete1(){
- DeleteID();
-     callTable();
-}
-function send(){
-  SentMessage();
-     callTable();
-}
-function update(){
- UpdateMessage();
-     callTable();
-}*/
+
 // responseAction
 var responseAction = function(data , type){
 //  for (var i = 0; i < (data.split(",").length); i++) {
