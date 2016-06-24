@@ -47,10 +47,12 @@ var init = function() {
      callTable();
 $('#SendButton').on('click', function() {
     SentMessage();
+     callTable();
     })
  
   $('#DeleteButton').on('click', function() {
     DeleteID();
+     callTable();
      })
 // $('#DisplayButton').on('click', function() {})
  	 
@@ -58,6 +60,7 @@ $('#SendButton').on('click', function() {
   
   $('#UpdateButton').on('click', function() {
     UpdateMessage();
+     callTable();
     })
 }
 
