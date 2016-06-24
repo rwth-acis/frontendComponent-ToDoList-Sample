@@ -46,42 +46,18 @@ var init = function() {
   
 $('#SendButton').on('click', function() {
     SentMessage();
-    client.sendRequest("GET", "", "", "text/plain", {}, true,
-  function(data, type) {
-        console.log(data);
-     client.sendIntent("showTable", data);
-  },
-  function(error) {
-    console.log(error);
-  });
-  })
+    })
  
   $('#DeleteButton').on('click', function() {
     DeleteID();
-    client.sendRequest("GET", "", "", "text/plain", {}, true,
-  function(data, type) {
-        console.log(data);
-     client.sendIntent("showTable", data);
-  },
-  function(error) {
-    console.log(error);
-  });
-  })
-/*  $('#DisplayButton').on('click', function() {
+     })
+ $('#DisplayButton').on('click', function() {
  	    callTable();
      
-  })*/
+  })
   $('#UpdateButton').on('click', function() {
     UpdateMessage();
-   client.sendRequest("GET", "", "", "text/plain", {}, true,
-  function(data, type) {
-        console.log(data);
-     client.sendIntent("showTable", data);
-  },
-  function(error) {
-    console.log(error);
-  });
-  })
+    })
 }
 
 
@@ -174,4 +150,5 @@ var responseAction = function(data , type){
 
 $(document).ready(function() {
   init();
+  callTable();
 });
