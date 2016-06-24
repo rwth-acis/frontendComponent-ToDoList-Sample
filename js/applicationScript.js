@@ -46,26 +46,47 @@ var init = function() {
   
 $('#SendButton').on('click', function() {
     SentMessage();
-    // send();
+    client.sendRequest("GET", "", "", "text/plain", {}, true,
+  function(data, type) {
+        console.log(data);
+     client.sendIntent("showTable", data);
+  },
+  function(error) {
+    console.log(error);
+  });
   })
  
   $('#DeleteButton').on('click', function() {
     DeleteID();
-    // delete1();
+    client.sendRequest("GET", "", "", "text/plain", {}, true,
+  function(data, type) {
+        console.log(data);
+     client.sendIntent("showTable", data);
+  },
+  function(error) {
+    console.log(error);
+  });
   })
-  $('#DisplayButton').on('click', function() {
+/*  $('#DisplayButton').on('click', function() {
  	    callTable();
      
-  })
+  })*/
   $('#UpdateButton').on('click', function() {
     UpdateMessage();
-  //   update();
+   client.sendRequest("GET", "", "", "text/plain", {}, true,
+  function(data, type) {
+        console.log(data);
+     client.sendIntent("showTable", data);
+  },
+  function(error) {
+    console.log(error);
+  });
   })
 }
 
 
 // callTable
-var callTable = function(){
+/*var callTable = function(){
 
   client.sendRequest("GET", "", "", "text/plain", {}, true,
   function(data, type) {
@@ -77,7 +98,7 @@ var callTable = function(){
   });
  // init();
  
-}
+}*/
 
 
 // DeleteID
