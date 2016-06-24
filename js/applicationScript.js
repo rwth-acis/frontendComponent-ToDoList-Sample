@@ -89,7 +89,8 @@ var DeleteID = function(){
   function(error) {
        console.log(error);
   });
- 
+  callTable();
+  
 }
 
 
