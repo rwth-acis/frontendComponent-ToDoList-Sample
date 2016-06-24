@@ -66,13 +66,13 @@ var callTable = function(){
 
   client.sendRequest("GET", "", "", "text/plain", {}, true,
   function(data, type) {
-        console.log(data);
+      //  console.log(data);
      client.sendIntent("showTable", data);
   },
   function(error) {
     console.log(error);
   });
- // init();
+
  
 }
 
@@ -84,7 +84,7 @@ var DeleteID = function(){
   function(data, type) {
     $("#messageStatus").val( data);
    
-    console.log(data);
+ //   console.log(data);
   },
   function(error) {
        console.log(error);
@@ -100,7 +100,7 @@ var SentMessage = function(){
   client.sendRequest("POST", "", listContent, "text/plain", {}, false,
   function(data, type) {
     $("#messageStatus").val( data);
-    console.log(data);
+  //  console.log(data);
   },
   function(error) {
     
@@ -115,15 +115,15 @@ var UpdateMessage = function()
   UpdateContent +=  ';' + $('#DeleteID').val();
   client.sendRequest("PUT", "{id}", UpdateContent, "text/plain", {}, false,
   function(data, type) {
- //id=  $('#DeleteID').val();
+
     $("#messageStatus").val( data);
-    console.log(data);
+  //  console.log(data);
   },
   function(error) {
     
     console.log(error);
   });
- // $("#messageStatus").html("Upated Element");
+
 }
 /*
 function delete1(){
