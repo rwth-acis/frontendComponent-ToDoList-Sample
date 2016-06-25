@@ -94,6 +94,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   
 <style>
 table,th,tr,td{
+width: 50%;
 border: 2px solid black; 
 
 }
@@ -108,7 +109,6 @@ border: 2px solid black;
    <textarea id='ToDoList' placeholder="Send or Update Message here!" class="form-control" rows="4"></textarea>
     <button id='SendButton' class="btn btn-default">Send Message!</button>
     <button id='DeleteButton' class="btn btn-default">Delete by ID!</button>
-    <button id='DisplayButton' class="btn btn-default">Show Data!</button>
     <button id='UpdateButton' class="btn btn-default">Update Data!</button>
     <textarea id='DeleteID' placeholder="Delete or Update message of ID:" class="form-control" rows="1"></textarea>
     <p><br />Status of latest action: </p>
