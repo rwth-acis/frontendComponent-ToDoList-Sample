@@ -87,12 +87,7 @@ var DeleteID = function(){
   client.sendRequest("DELETE", "", DeleteID, "text/plain", {}, false,
   function(data, type) {
     $("#messageStatus").val( data);
-   
-  },
-  function(error) {
-       console.log(error);
-  });
-   client.sendRequest("GET", "", "", "text/plain", {}, true,
+    client.sendRequest("GET", "", "", "text/plain", {}, true,
   function(data, type) {
       //  console.log(data);
      client.sendIntent("showTable", data);
@@ -100,6 +95,11 @@ var DeleteID = function(){
   function(error) {
     console.log(error);
   });
+  },
+  function(error) {
+       console.log(error);
+  });
+  
 
   
 }
@@ -112,11 +112,6 @@ var SentMessage = function(){
   function(data, type) {
     $("#messageStatus").val( data);
   //  console.log(data);
-  },
-  function(error) {
-    
-    console.log(error);
-  });
    client.sendRequest("GET", "", "", "text/plain", {}, true,
   function(data, type) {
       //  console.log(data);
@@ -125,6 +120,12 @@ var SentMessage = function(){
   function(error) {
     console.log(error);
   });
+  },
+  function(error) {
+    
+    console.log(error);
+  });
+  
 }
 
 // SentMessage
@@ -137,11 +138,6 @@ var UpdateMessage = function()
 
     $("#messageStatus").val( data);
   //  console.log(data);
-  },
-  function(error) {
-    
-    console.log(error);
-  });
    client.sendRequest("GET", "", "", "text/plain", {}, true,
   function(data, type) {
       //  console.log(data);
@@ -150,6 +146,12 @@ var UpdateMessage = function()
   function(error) {
     console.log(error);
   });
+  },
+  function(error) {
+    
+    console.log(error);
+  });
+  
 
 }
 
