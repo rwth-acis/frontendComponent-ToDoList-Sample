@@ -116,7 +116,7 @@ tr:hover{background-color:#f5f5f5}
 
    <textarea id='ToDoList' placeholder="Send or Update Message here!" class="form-control" rows="4"></textarea>
     <button id='SendButton' class="btn btn-default">Send Message!</button>
-    <button id='DeleteButton' class="btn btn-default">Delete by ID!</button>
+    <button id='DeleteButton' class="btn btn-default">Delete Data!</button>
     <button id='UpdateButton' class="btn btn-default">Update Data!</button>
     <textarea id='DeleteID' placeholder="Delete or Update message of ID:" class="form-control" rows="1"></textarea>
     <p><br />Status of latest action: </p>
