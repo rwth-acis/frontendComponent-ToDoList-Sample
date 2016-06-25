@@ -104,19 +104,22 @@ input {
   
   <!-- container for actual page content -->
   <div class="container" id="main-content" >
-
+<section>
    <textarea id='ToDoList' placeholder="Send or Update Message here!" class="form-control" rows="4"></textarea>
     <button id='SendButton' class="btn btn-default">Send Message!</button>
     <button id='DeleteButton' class="btn btn-default">Delete Data!</button>
     <button id='UpdateButton' class="btn btn-default">Update Data!</button>
+     </section>
+     
     <textarea id='DeleteID' placeholder="Data ID" class="form-control" rows="1" cols="2" readonly></textarea>
+    
+<section>
     <p><br />Status of latest action: </p>
     <input id='messageStatus' readonly></input>
+    </section>
     
-   
  </div>
- 
-</body>
+ </body>
 
 </html>
 
