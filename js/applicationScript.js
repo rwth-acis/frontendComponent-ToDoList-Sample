@@ -56,11 +56,9 @@ $('#SendButton').on('click', function() {
      })
 // $('#DisplayButton').on('click', function() {})
  	 
-     
-  
   $('#UpdateButton').on('click', function() {
     UpdateMessage();
- //    callTable();
+
     })
 }
 
@@ -157,16 +155,14 @@ var UpdateMessage = function()
 
 // responseAction
 var responseAction = function(data , type){
-//  for (var i = 0; i < (data.split(",").length); i++) {
+
     $('#DeleteID').val(data.split(",")[0]);
   $('#ToDoList').val(data.split(",")[1]);
-  // $('#ToDoList').val(data);
-  
-  
+
 }
 
 
 $(document).ready(function() {
   init();
-//  callTable();
+
 });
