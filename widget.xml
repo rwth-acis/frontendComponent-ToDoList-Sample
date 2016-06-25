@@ -93,11 +93,19 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <script type="text/javascript" src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/applicationScript.js"></script>
   
 <style>
-table,th,tr,td{
-width: 50%;
-border: 2px solid black; 
 
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover{background-color:#f5f5f5}
 </style>
 </head>
 <body bgcolor="#E6E6FA">
