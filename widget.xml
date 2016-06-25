@@ -95,6 +95,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <style>
 input {
     color: red;
+    text-align:center;
 }
 section {
      color:black;
@@ -106,7 +107,7 @@ footer {
     color:black;
     clear:both;
     text-align:center;
-    padding:5px;
+    padding:10px;
   }
 </style>
 
