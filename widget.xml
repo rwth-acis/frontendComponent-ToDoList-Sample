@@ -96,6 +96,20 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 input {
     color: red;
 }
+#section {
+   background-color:white;
+    color:black;
+    clear:both;
+    text-align:center;
+    padding:10px; 
+}
+#footer {
+    background-color:gray;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px; 
+}
 </style>
 
 </head>
@@ -113,10 +127,10 @@ input {
      
     <textarea id='DeleteID' placeholder="Data ID" class="form-control" rows="1" cols="2" readonly></textarea>
     
-<section>
+<footer>
     <p><br />Status of latest action: </p>
     <input id='messageStatus' readonly></input>
-    </section>
+    </footer>
     
  </div>
  </body>
