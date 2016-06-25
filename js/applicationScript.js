@@ -106,7 +106,7 @@ var DeleteID = function(){
 // SentMessage
 var SentMessage = function(){
   var listContent = $('#ToDoList').val();
-  listContent.toString(); 
+ // listContent.toString(); 
   client.sendRequest("POST", "", listContent, "text/plain", {}, false,
   function(data, type) {
     $("#messageStatus").val( data);
