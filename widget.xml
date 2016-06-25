@@ -96,14 +96,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 input {
     color: red;
 }
-#section {
+section {
    background-color:white;
     color:black;
     clear:both;
     text-align:center;
     padding:10px; 
 }
-#footer {
+footer {
     background-color:gray;
     color:white;
     clear:both;
