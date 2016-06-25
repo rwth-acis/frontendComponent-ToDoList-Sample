@@ -93,10 +93,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <script type="text/javascript" src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/applicationScript.js"></script>
   
 <style>
-
-
-
+input {
+    color: red;
+}
 </style>
+
 </head>
 <body bgcolor="#E6E6FA">
 
