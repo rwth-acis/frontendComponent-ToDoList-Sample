@@ -133,7 +133,7 @@ var SentMessage = function(){
  // listContent.toString(); 
   client.sendRequest("POST", "{message}", messageContent, "text/plain", {}, false,
   function(data, type) {
-    console.log(data);
+ //   console.log(data);
  /*   $("#messageStatus").val( data);
   //  console.log(data);
    client.sendRequest("GET", "", "", "text/plain", {}, true,
