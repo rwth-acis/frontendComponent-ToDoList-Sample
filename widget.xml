@@ -2,7 +2,7 @@
 <Module>
   <ModulePrefs title="ToDoList" description="This is a simple toDoList"
     author="desared" author_email="me@gmail.com"
-    width="400" height="400" >
+    width="350" height="300" >
 
     <Require feature="opensocial-0.8"></Require>
     <Require feature="openapp"></Require>
