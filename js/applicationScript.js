@@ -109,7 +109,7 @@ var SentMessage = function(){
   var listContent = $('#ToDoList').val();
   listContent += ';' + $('#MessageContent').val();
   //var messageContent = $('#MessageContent').val();
-  client.sendRequest("POST", "caption", listContent, "text/plain", {}, false,
+  client.sendRequest("POST", "", listContent, "text/plain", {}, false,
   function(data, type) {
     $("#messageStatus").val( data);
   //  console.log(data);
