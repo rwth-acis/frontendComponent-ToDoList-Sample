@@ -108,7 +108,7 @@ var DeleteID = function(){
 var SentMessage = function(){
   var listContent = $('#ToDoList').val();
   
-  client.sendRequest("POST", "caption/{caption}", listContent, "text/plain", {}, false,
+  client.sendRequest("POST", "caption", listContent, "text/plain", {}, false,
   function(data, type) {
     $("#messageStatus").val( data);
   //  console.log(data);
@@ -126,7 +126,7 @@ var SentMessage = function(){
     console.log(error);
   });
  var messageContent = $('#MessageContent').val();
-  client.sendRequest("POST", "message/{message}", messageContent, "text/plain", {}, false,
+  client.sendRequest("POST", "message", messageContent, "text/plain", {}, false,
   function(data, type) {
    },
   function(error) {
