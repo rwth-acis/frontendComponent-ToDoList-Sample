@@ -46,7 +46,7 @@ var init = function() {
   
      callTable();
 $('#SendButton').on('click', function() {
-    SentCaption();
+   
     SentMessage();
   //   callTable();
     })
@@ -105,10 +105,10 @@ var DeleteID = function(){
 
 
 // Sent Caption
-var SentCaption = function(){
+var SentMessage = function(){
   var listContent = $('#ToDoList').val();
- // listContent.toString(); 
-  client.sendRequest("POST", "caption", listContent, "text/plain", {}, false,
+var messageContent = $('#MessageContent').val();
+  client.sendRequest("POST", "{caption}", listContent, "text/plain", {}, false,
   function(data, type) {
     $("#messageStatus").val( data);
   //  console.log(data);
@@ -125,33 +125,16 @@ var SentCaption = function(){
     
     console.log(error);
   });
-  
-}
-// Sent Message
-var SentMessage = function(){
-  var messageContent = $('#MessageContent').val();
- // listContent.toString(); 
-  client.sendRequest("POST", "message", messageContent, "text/plain", {}, false,
+  client.sendRequest("POST", "{message}", messageContent, "text/plain", {}, false,
   function(data, type) {
- //   console.log(data);
- /*   $("#messageStatus").val( data);
-  //  console.log(data);
-   client.sendRequest("GET", "", "", "text/plain", {}, true,
-  function(data, type) {
-      //  console.log(data);
-     client.sendIntent("showTable", data);
-  },
-  function(error) {
-    console.log(error);
-  });*/
-  },
+   },
   function(error) {
     
     console.log(error);
   });
-  
 }
-// SentMessage
+
+// Update Message
 var UpdateMessage = function()
 {
      var UpdateContent = $('#ToDoList').val();
