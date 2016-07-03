@@ -67,7 +67,7 @@ $('#SendButton').on('click', function() {
 // callTable
 var callTable = function(){
 
-  client.sendRequest("GET", "", "", "text/plain", {}, true,
+  client.sendRequest("GET", "caption", "", "text/plain", {}, true,
   function(data, type) {
       //  console.log(data);
      client.sendIntent("showTable", data);
