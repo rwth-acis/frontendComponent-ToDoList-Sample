@@ -140,6 +140,7 @@ var SentMessage = function(){
 var UpdateMessage = function()
 {
      var UpdateContent = $('#ToDoList').val();
+     UpdateContent +=  ';' + $('#MessageContent').val();
   UpdateContent +=  ';' + $('#DeleteID').val();
   client.sendRequest("PUT", "{id}", UpdateContent, "text/plain", {}, false,
   function(data, type) {
