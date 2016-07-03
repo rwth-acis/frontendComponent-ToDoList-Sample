@@ -131,7 +131,7 @@ var SentCaption = function(){
 var SentMessage = function(){
   var messageContent = $('#MessageContent').val();
  // listContent.toString(); 
-  client.sendRequest("POST", "{message}", messageContent, "text/plain", {}, false,
+  client.sendRequest("POST", "message", messageContent, "text/plain", {}, false,
   function(data, type) {
  //   console.log(data);
  /*   $("#messageStatus").val( data);
@@ -156,7 +156,7 @@ var UpdateMessage = function()
 {
      var UpdateContent = $('#ToDoList').val();
   UpdateContent +=  ';' + $('#DeleteID').val();
-  client.sendRequest("PUT", "{id}", UpdateContent, "text/plain", {}, false,
+  client.sendRequest("PUT", "id", UpdateContent, "text/plain", {}, false,
   function(data, type) {
 
     $("#messageStatus").val( data);
