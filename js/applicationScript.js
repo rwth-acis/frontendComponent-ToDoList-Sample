@@ -168,7 +168,7 @@ var responseAction = function(data , type){
 
     $('#DeleteID').val(data.split(",")[0]);
   $('#ToDoList').val(data.split(",")[1]);
-
+  $('#MessageContent').val(data.split(",")[2]);
 }
 
 
