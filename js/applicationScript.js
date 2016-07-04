@@ -36,6 +36,7 @@ var init = function() {
   
   var iwcCallback = function(intent) {
     // define your reactions on incoming iwc events here
+    // iwc response calls the function responseAction
     console.log(intent);
     if (intent.action == "test") {
       responseAction(intent.data);
@@ -43,52 +44,46 @@ var init = function() {
   };
   
   client = new Las2peerWidgetLibrary("http://localhost:8080/ToDoList", iwcCallback);
-  
+  // call the initial table when page is reloaded 
      callTable();
+     // events according to button clicking 
+     // send button
 $('#SendButton').on('click', function() {
-   
-    SentMessage();
-  //   callTable();
+       SentMessage();
     })
- 
+    // delete button
   $('#DeleteButton').on('click', function() {
     DeleteID();
-   //  callTable();
      })
-// $('#DisplayButton').on('click', function() {})
- 	 
+     // update button
   $('#UpdateButton').on('click', function() {
     UpdateMessage();
-
     })
 }
-
-
-// callTable
+// callTable function retrieves all the data from backend
 var callTable = function(){
-
+  // retrieve the data using get method
   client.sendRequest("GET", "", "", "text/plain", {}, true,
   function(data, type) {
-      //  console.log(data);
+      //  sends an iwc calling to Display widget, where the retrieved data will be displayed
      client.sendIntent("showTable", data);
   },
   function(error) {
     console.log(error);
   });
-
- 
 }
-
-
-// DeleteID
+// DeleteID function deletes each row table by id
 var DeleteID = function(){
   var DeleteID = $('#DeleteID').val();
+  // delete method deleting DeleteID
   client.sendRequest("DELETE", "", DeleteID, "text/plain", {}, false,
   function(data, type) {
+        // display status of latest action
     $("#messageStatus").val( data);
+      // retrieve the data after update using get method
     client.sendRequest("GET", "", "", "text/plain", {}, true,
   function(data, type) {
-      //  console.log(data);
+      //  after deleting a given data a new call must be sent to Display for reloading purposes
      client.sendIntent("showTable", data);
   },
   function(error) {
@@ -98,58 +93,45 @@ var DeleteID = function(){
   function(error) {
        console.log(error);
   });
-  
-
-  
 }
-
-
-// Sent Caption
+// Sent Caption function sends the caption and message in backend
 var SentMessage = function(){
   var listContent = $('#ToDoList').val();
   listContent += ';' + $('#MessageContent').val();
-  //var messageContent = $('#MessageContent').val();
+ // post method sending listcontent
   client.sendRequest("POST", "", listContent, "text/plain", {}, false,
   function(data, type) {
+    // display status of latest action
     $("#messageStatus").val( data);
-  //  console.log(data);
+  // retrieve the data after update using get method
    client.sendRequest("GET", "", "", "text/plain", {}, true,
   function(data, type) {
-      //  console.log(data);
+      //  after sending a given message a new call must be sent to Display for reloading purposes
      client.sendIntent("showTable", data);
   },
   function(error) {
     console.log(error);
   });
-/*  client.sendRequest("POST", "message", messageContent, "text/plain", {}, false,
-  function(data, type) {
-   },
-  function(error) {
-    
-    console.log(error);
-  });*/
   },
   function(error) {
-    
     console.log(error);
   });
- 
 }
-
-// Update Message
+// Update Message function for updating each message and caption by id
 var UpdateMessage = function()
 {
      var UpdateContent = $('#ToDoList').val();
      UpdateContent +=  ';' + $('#MessageContent').val();
   UpdateContent +=  ';' + $('#DeleteID').val();
+   // put method updating UpdateContent where all data is saved as a variable
   client.sendRequest("PUT", "{id}", UpdateContent, "text/plain", {}, false,
   function(data, type) {
-
+// display the latest action
     $("#messageStatus").val( data);
-  //  console.log(data);
+  // retrieve the data after update
    client.sendRequest("GET", "", "", "text/plain", {}, true,
   function(data, type) {
-      //  console.log(data);
+      //  after updating a given message or caption, a new call must be sent to Display for reloading purposes
      client.sendIntent("showTable", data);
   },
   function(error) {
@@ -157,23 +139,17 @@ var UpdateMessage = function()
   });
   },
   function(error) {
-    
     console.log(error);
   });
-  
-
 }
-
-// responseAction
+// responseAction function as a response for iwc call intent coming from Display widget
 var responseAction = function(data , type){
-
+// display data accordingly in each text area 
     $('#DeleteID').val(data.split(",")[0]);
   $('#ToDoList').val(data.split(",")[1]);
   $('#MessageContent').val(data.split(",")[2]);
 }
-
-
+// call the initial function when widget is reloaded 
 $(document).ready(function() {
   init();
-
 });
