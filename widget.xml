@@ -116,9 +116,9 @@ footer {
   <!-- container for actual page content -->
   <div class="container" id="main-content" >
 <section>
+   <p><br />Input your content: </p>
    <textarea id='ToDoList' placeholder="Enter the caption!" class="form-control" rows="1"></textarea>
    <textarea id='MessageContent' placeholder="Enter the message!" class="form-control" rows="4"></textarea>
-     <textarea id='DeleteID' placeholder="Data ID" class="form-control" rows="1" cols="2" readonly></textarea>
     <button id='SendButton' class="btn btn-default">Send Message!</button>
     <button id='DeleteButton' class="btn btn-default">Delete Data!</button>
     <button id='UpdateButton' class="btn btn-default">Update Data!</button>
