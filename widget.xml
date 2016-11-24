@@ -23,7 +23,7 @@
   <Content type="html">
   <![CDATA[
 <!--
-Copyright (c) 2015 Advanced Community Information Systems (ACIS) Group, 
+Copyright (c) 2015 Advanced Community Information Systems (ACIS) Group,
 Chair of Computer Science 5 (Databases & Information Systems), RWTH Aachen University, Germany
 All rights reserved.
 
@@ -70,7 +70,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- Bootstrap stylesheet import -->
   <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <!-- own style information -->
-  <link rel="stylesheet" href="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/css/style.css">
+  <link rel="stylesheet" href="http://localhost/css/style.css">
 
   <!-- import jQuery for AJAX calls -->
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -79,19 +79,19 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- OpenApp import -->
   <script type="text/javascript" src="http://open-app.googlecode.com/files/openapp.js"></script>
   <!-- inter widget communication library import -->
-  <script type="text/javascript" src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/lib/iwc.js"></script>
+  <script type="text/javascript" src="http://localhost/js/lib/iwc.js"></script>
   <!-- additional widget specific imports (put your own imports here as well) -->
-  <script src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/lib/y.js"></script>
-  <script src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/lib/y-array.js"></script>
-  <script src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/lib/y-text.js"></script>
-  <script src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/lib/y-websockets-client.js"></script>  
-  <script src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/lib/y-memory.js"></script>
+  <script src="http://localhost/js/lib/y.js"></script>
+  <script src="http://localhost/js/lib/y-array.js"></script>
+  <script src="http://localhost/js/lib/y-text.js"></script>
+  <script src="http://localhost/js/lib/y-websockets-client.js"></script>
+  <script src="http://localhost/js/lib/y-memory.js"></script>
 
  <!-- import the client library -->
-  <script type="text/javascript" src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/lib/las2peerWidgetLibrary.js"></script>
+  <script type="text/javascript" src="http://localhost/js/lib/las2peerWidgetLibrary.js"></script>
   <!-- import application script -->
-  <script type="text/javascript" src="http://CAE-Community-Application-Editor.github.io/frontendComponent-ToDoList-Sample/js/applicationScript.js"></script>
-  
+  <script type="text/javascript" src="http://localhost/js/applicationScript.js"></script>
+
 <style>
 input {
     color: red;
@@ -109,26 +109,31 @@ footer {
     text-align:center;
     padding:10px;
   }
+  #content {
+    height:200px;
+    padding-bottom:30px;
+    overflow:auto;
+  }
+
+  hr{
+    clear:both;
+  }
 </style>
 
 </head>
 
   <!-- container for actual page content -->
-  <div class="container" id="main-content" >
-<section>
-   <p>Message Editor:</p>
-   <textarea id='ToDoList' placeholder="Enter the message topic!" class="form-control" rows="1"></textarea>
-   <textarea id='MessageContent' placeholder="Enter the message content!" class="form-control" rows="4"></textarea>
-         <textarea id='DeleteID' placeholder="Data ID" class="form-control" rows="1" cols="2" readonly style="display:none"></textarea>
-    <button id='SendButton' class="btn btn-default">Send Message!</button>
-    <button id='DeleteButton' class="btn btn-default">Delete Data!</button>
-    <button id='UpdateButton' class="btn btn-default">Update Data!</button>
-     </section>
-<footer>
-    <p><br />Status of latest action: </p>
-    <input id='messageStatus' readonly></input>
-    </footer>
-    
+  <div class="container" id="main-content">
+  <div id="editor">
+    <textarea id='captionField' placeholder="Enter a caption!" class="form-control" rows="1"></textarea>
+    <textarea id='contentField' placeholder="Enter the task content!" class="form-control" rows="4"></textarea>
+    <textarea id='deleteID' placeholder="Data ID" class="form-control" rows="1" cols="2" readonly style="display:none"></textarea>
+    <button id='createItem' class="btn btn-default">Create</button>
+    <button id='deleteItem' class="btn btn-default">Delete</button>
+    <button id='updateItem' class="btn btn-default">Update</button>
+  </div>
+  <div id="content">
+  </div>
  </div>
  </body>
 

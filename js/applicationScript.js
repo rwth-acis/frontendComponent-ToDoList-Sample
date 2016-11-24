@@ -2,21 +2,21 @@
  * Copyright (c) 2015 Advanced Community Information Systems (ACIS) Group, Chair
  * of Computer Science 5 (Databases & Information Systems), RWTH Aachen
  * University, Germany All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
- * 
+ *
  * Redistributions of source code must retain the above copyright notice, this
  * list of conditions and the following disclaimer.
- * 
+ *
  * Redistributions in binary form must reproduce the above copyright notice,
  * this list of conditions and the following disclaimer in the documentation
  * and/or other materials provided with the distribution.
- * 
+ *
  * Neither the name of the ACIS Group nor the names of its contributors may be
  * used to endorse or promote products derived from this software without
  * specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -33,7 +33,7 @@
 var client;
 
 var init = function() {
-  
+
   var iwcCallback = function(intent) {
     // define your reactions on incoming iwc events here
     // iwc response calls the function responseAction
@@ -42,77 +42,86 @@ var init = function() {
       responseAction(intent.data);
     }
   };
-  
+
   client = new Las2peerWidgetLibrary("http://localhost:8080/ToDoList", iwcCallback);
-  // call the initial table when page is reloaded 
-     callTable();
-     // events according to button clicking 
-     // send button
-$('#SendButton').on('click', function() {
-       SentMessage();
-    })
-    // delete button
-  $('#DeleteButton').on('click', function() {
-    DeleteID();
-     })
-     // update button
-  $('#UpdateButton').on('click', function() {
+  // call the initial table when page is reloaded
+  getTable();
+  // events according to button clicking
+  // send button
+  $('#createItem').on('click', function() {
+    createItem();
+  })
+  // delete button
+  $('#deleteItem').on('click', function() {
+    deleteItem();
+  })
+  // update button
+  $('#updateItem').on('click', function() {
     UpdateMessage();
-    })
+  })
 }
-// callTable function retrieves all the data from backend
-var callTable = function(){
+// getTable function retrieves all the data from backend
+var getTable = function(){
   // retrieve the data using get method
-  client.sendRequest("GET", "", "", "text/plain", {}, true,
+  client.sendRequest("GET", "", "", "application/json", {}, false,
   function(data, type) {
-      //  sends an iwc calling to Display widget, where the retrieved data will be displayed
-     client.sendIntent("showTable", data);
+      $("#content").html("");
+
+      //Append elements for each entry in the list
+      for(var item in data) {
+        var id = data[item].id;
+        var caption = data[item].caption;
+        var message = data[item].message;
+        if(caption.length > 0){
+          var html = "<div class='item' id="+ id +"><hr/><h4>"+ caption +"</h4><p>"+ message +"</p></div>";
+          $("#content").append(html);
+        }     
+      }
+
+      //Add click handlers
+      $('.item').on('click',function() {
+        var id = $(this).attr('id');
+        loadItem(id);
+      })
+      // sends an iwc calling to Display widget, where the retrieved data will be displayed
+      // client.sendIntent("showTable", data);
   },
   function(error) {
     console.log(error);
   });
 }
+
+var loadItem = function(id) {
+  var caption = $("#"+id).find("h4").text();
+  var message = $("#"+id).find("p").text();
+  $('#captionField').val(caption);
+  $('#contentField').val(message);
+  $('#deleteID').val(id);
+}
+
 // DeleteID function deletes each row table by id
-var DeleteID = function(){
-  var DeleteID = $('#DeleteID').val();
+var deleteItem = function(){
+  var deleteId = $('#deleteID').val();
   // delete method deleting DeleteID
-  client.sendRequest("DELETE", "", DeleteID, "text/plain", {}, false,
+  client.sendRequest("DELETE", deleteId, "", "application/json", {}, false,
   function(data, type) {
-        // display status of latest action
-    $("#messageStatus").val( data);
-      // retrieve the data after update using get method
-    client.sendRequest("GET", "", "", "text/plain", {}, true,
-  function(data, type) {
-      //  after deleting a given data a new call must be sent to Display for reloading purposes
-     client.sendIntent("showTable", data);
-  },
-  function(error) {
-    console.log(error);
-  });
+        getTable();
   },
   function(error) {
        console.log(error);
   });
 }
 // Sent Caption function sends the caption and message in backend
-var SentMessage = function(){
-  var listContent = $('#ToDoList').val();
-  listContent += ';' + $('#MessageContent').val();
- // post method sending listcontent
-  client.sendRequest("POST", "", listContent, "text/plain", {}, false,
+var createItem = function(){
+  var content = new Object();
+  content.caption = $('#captionField').val();
+  content.message = $('#contentField').val();
+
+  // post method for creating the new item
+  client.sendRequest("POST", "", JSON.stringify(content), "application/json", {}, false,
   function(data, type) {
-    // display status of latest action
-    $("#messageStatus").val( data);
-  // retrieve the data after update using get method
-   client.sendRequest("GET", "", "", "text/plain", {}, true,
-  function(data, type) {
-      //  after sending a given message a new call must be sent to Display for reloading purposes
-     client.sendIntent("showTable", data);
-  },
-  function(error) {
-    console.log(error);
-  });
-  },
+    getTable();
+  }, 
   function(error) {
     console.log(error);
   });
@@ -120,23 +129,14 @@ var SentMessage = function(){
 // Update Message function for updating each message and caption by id
 var UpdateMessage = function()
 {
-     var UpdateContent = $('#ToDoList').val();
-     UpdateContent +=  ';' + $('#MessageContent').val();
-  UpdateContent +=  ';' + $('#DeleteID').val();
-   // put method updating UpdateContent where all data is saved as a variable
-  client.sendRequest("PUT", "{id}", UpdateContent, "text/plain", {}, false,
+  var content = new Object();
+  content.caption = $('#captionField').val();
+  content.message = $('#contentField').val();
+  content.id = $('#deleteID').val();
+  // put method updating UpdateContent where all data is saved as a variable
+  client.sendRequest("PUT", content.id, JSON.stringify(content), "application/json", {}, false,
   function(data, type) {
-// display the latest action
-    $("#messageStatus").val( data);
-  // retrieve the data after update
-   client.sendRequest("GET", "", "", "text/plain", {}, true,
-  function(data, type) {
-      //  after updating a given message or caption, a new call must be sent to Display for reloading purposes
-     client.sendIntent("showTable", data);
-  },
-  function(error) {
-    console.log(error);
-  });
+    getTable();
   },
   function(error) {
     console.log(error);
@@ -144,12 +144,12 @@ var UpdateMessage = function()
 }
 // responseAction function as a response for iwc call intent coming from Display widget
 var responseAction = function(data , type){
-// display data accordingly in each text area 
+// display data accordingly in each text area
     $('#DeleteID').val(data.split(",")[0]);
   $('#ToDoList').val(data.split(",")[1]);
   $('#MessageContent').val(data.split(",")[2]);
 }
-// call the initial function when widget is reloaded 
+// call the initial function when widget is reloaded
 $(document).ready(function() {
   init();
 });
